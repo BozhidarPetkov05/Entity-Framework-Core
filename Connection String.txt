@@ -1,0 +1,1 @@
+"Server=DESKTOP-58IIM9O\\SQLEXPRESS;Database=***;User Id=DESKTOP-58IIM9O\\XidZ01;Integrated Security=True;"

@@ -1,0 +1,7 @@
+Commands:
+Install-Package Microsoft.EntityFrameworkCore.Tools –v 6.0.1
+Install-Package Microsoft.EntityFrameworkCore.SqlServer –v 6.0.1
+Install-Package Microsoft.EntityFrameworkCore.Design -v 6.0.1
+
+-------------------------------------------------------------------
+Scaffold-DbContext -Connection "Server=DESKTOP-58IIM9O\SQLEXPRESS;Database=SoftUni;Integrated Security=True;" -Provider Microsoft.EntityFrameworkCore.SqlServer -OutputDir Data/Models
