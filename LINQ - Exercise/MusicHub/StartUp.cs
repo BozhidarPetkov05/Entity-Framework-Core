@@ -18,12 +18,14 @@
 
             //Test your solutions here
 
-            Console.WriteLine(ExportSongsAboveDuration(context, 4));
+            Console.WriteLine(ExportAlbumsInfo(context, 9));
         }
 
         public static string ExportAlbumsInfo(MusicHubDbContext context, int producerId)
         {
-            var albumsUnordered = context.Albums
+            var albums = context.Albums
+                .AsEnumerable()
+                .Where(a => a.ProducerId == producerId)
                 .Select(a => new
                 {
                     a.ProducerId,
@@ -34,12 +36,10 @@
                     ProducerName = a.Producer.Name,
 
                 })
-                .Where(a => a.ProducerId == producerId)
-                .ToList();
-
-            var albums = albumsUnordered
                 .OrderByDescending(a => a.Price)
                 .ToList();
+
+           
 
             StringBuilder sb = new StringBuilder();
 
