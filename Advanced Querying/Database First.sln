@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database First", "Database First\Database First.csproj", "{02D947CE-8BDF-4CF7-9224-CF1EE19503CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database First.Infrastructure", "Database First.Infrastructure\Database First.Infrastructure.csproj", "{43600A72-703B-4512-BEDE-A0095C306D32}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{02D947CE-8BDF-4CF7-9224-CF1EE19503CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02D947CE-8BDF-4CF7-9224-CF1EE19503CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02D947CE-8BDF-4CF7-9224-CF1EE19503CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02D947CE-8BDF-4CF7-9224-CF1EE19503CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43600A72-703B-4512-BEDE-A0095C306D32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43600A72-703B-4512-BEDE-A0095C306D32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43600A72-703B-4512-BEDE-A0095C306D32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43600A72-703B-4512-BEDE-A0095C306D32}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {14922B11-2AF9-4CA3-BB04-CD30C7002F01}
+	EndGlobalSection
+EndGlobal
