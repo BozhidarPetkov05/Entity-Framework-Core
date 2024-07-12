@@ -21,8 +21,15 @@ namespace Database_First
             //Demo with Interpolated String
             DemoWithInterpolatedString(context);
 
+            //Creating Stored Procedures
+            CreatingStoredProcedure();
+
             //Executing Stored Procedures
             ExecutingStoredProcedures(context);
+
+            //ReatachingObjects
+            ReattachingObjects();
+
         }
 
         static void DemoQueryWithInt(SoftUniDbContext context)
@@ -57,6 +64,23 @@ namespace Database_First
             
             Console.WriteLine($"Demo with interpolated string count: {employees.Count}");
         }
+        static void CreatingStoredProcedure()
+        {
+            try
+            {
+                using (SoftUniDbContext context = new SoftUniDbContext())
+                {
+                    string query = "CREATE PROC TestProcedure @p INT AS SELECT TOP(@p) * FROM Employees";
+                    context.Database.ExecuteSqlRaw(query);
+                }
+                Console.WriteLine("Created Stored Procedure");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("There is already a procedure with this name!");
+            }
+            
+        }
 
         static void ExecutingStoredProcedures(SoftUniDbContext context)
         {
@@ -66,5 +90,29 @@ namespace Database_First
 
             Console.WriteLine($"Rows Affected From Stored Procedure: {rowsAffected}");
         }
+
+        static void ReattachingObjects()
+        {
+            Employee? employee;
+            using (SoftUniDbContext context = new SoftUniDbContext())
+            {
+                employee = context.Find<Employee>(1);
+            }
+
+            if (employee != null)
+            {
+                employee.MiddleName = "Ralf";
+                
+                using SoftUniDbContext ctx = new SoftUniDbContext();
+
+                var entry = ctx.Entry(employee);
+                entry.State = EntityState.Modified;
+
+                ctx.SaveChanges();
+
+                Console.WriteLine("Reattaching Object: Saved Changes");
+            }
+        }
+
     }
 }
