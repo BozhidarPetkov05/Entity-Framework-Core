@@ -120,3 +120,5 @@ C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Da
 C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Database First\obj\Debug\net6.0\Database First.pdb
 C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Database First\obj\Debug\net6.0\Database First.genruntimeconfig.cache
 C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Database First\obj\Debug\net6.0\ref\Database First.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Database First\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\Advanced Querying\Database First\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

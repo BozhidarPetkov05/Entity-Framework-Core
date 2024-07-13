@@ -29,6 +29,7 @@ namespace Database_First.Infrastructure.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
+                optionsBuilder.UseLazyLoadingProxies();
                 optionsBuilder.UseSqlServer(Configuration.ConnectionString);
             }
         }

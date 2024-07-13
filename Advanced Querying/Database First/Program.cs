@@ -2,6 +2,7 @@
 using Database_First.Infrastructure.Data.Models;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Database_First
@@ -30,6 +31,14 @@ namespace Database_First
             //ReatachingObjects
             ReattachingObjects();
 
+            //Loading Objects Explicitly - Loading the objects when we need them
+            ExplicitLoading();
+
+            //Eager Loading - Loading all the date at once
+            EagerLoading();
+
+            //Lazy Loading - Delays loading of data until it's used, we don't know when or how many queries it makes
+            LazyLoading();
         }
 
         static void DemoQueryWithInt(SoftUniDbContext context)
@@ -114,5 +123,72 @@ namespace Database_First
             }
         }
 
+        static void ExplicitLoading()
+        {
+            Employee? employee;
+            using (SoftUniDbContext context = new SoftUniDbContext())
+            {
+                //Getting the employee data only
+                employee = context.Employees.Find(1);
+                var entry = context.Entry(employee);
+
+                //Loading the address of the current employee
+                entry.Reference(e => e.Address).Load();
+                Console.WriteLine("Address Loaded.");
+
+                //Loading all the projects of the employee
+                entry.Collection(e => e.Projects).Load();
+                Console.WriteLine("Projects Loaded.");
+            }
+        }
+
+        static void EagerLoading()
+        {
+            using (SoftUniDbContext context = new SoftUniDbContext())
+            {
+                //Loading the department with eager loading
+                var employees = context.Employees
+                    .Where(e => e.DepartmentId == 1)
+                    .Include(e => e.Department) //We want to use the Department property
+                    .ToList();
+                
+                Console.WriteLine(" ");
+                Console.WriteLine("Eager Loading:");
+
+                //Loading the address with explicit loading
+                foreach (var employee in employees)
+                {
+                    if (employee.EmployeeId == 3)
+                    {
+                        var entry = context.Entry(employee);
+                        entry.Reference(e => e.Address).Load();
+
+                        Console.WriteLine($"{employee.FirstName} {employee.LastName}, {employee.Department.Name}, {employee.Address.AddressText}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{employee.FirstName} {employee.LastName}, {employee.Department.Name}");
+                    }
+                }
+            }
+        }
+
+        static void LazyLoading()
+        {
+            using (SoftUniDbContext context = new SoftUniDbContext())
+            {
+                var employees = context.Employees
+                    .Where(e => e.DepartmentId == 1)
+                    .ToList();
+
+                Console.WriteLine(" ");
+                Console.WriteLine("Lazy Loading:");
+
+                foreach (var employee in employees)
+                {
+                    Console.WriteLine($"{employee.FirstName} {employee.LastName} {employee.Department.Name}");
+                }
+            }
+        }
     }
 }

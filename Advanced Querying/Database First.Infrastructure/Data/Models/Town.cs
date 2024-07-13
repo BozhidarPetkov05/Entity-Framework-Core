@@ -23,7 +23,7 @@ namespace Database_First.Infrastructure.Data.Models
         public int? CountryId { get; set; }
 
         [ForeignKey(nameof(CountryId))]
-        public Country? Country { get; set; }
+        public virtual Country? Country { get; set; }
 
         [InverseProperty("Town")]
         public virtual ICollection<Address> Addresses { get; set; }
