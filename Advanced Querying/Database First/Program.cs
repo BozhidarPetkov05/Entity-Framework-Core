@@ -190,5 +190,28 @@ namespace Database_First
                 }
             }
         }
+
+        static void ConcurrencyCheck()
+        {
+            using SoftUniDbContext context1 = new SoftUniDbContext();
+            using SoftUniDbContext context2 = new SoftUniDbContext();
+
+            var pr1 = context1.Employees
+                .Where(e => e.EmployeeId == 1)
+                .Select(e => e.Projects.First())
+                .FirstOrDefault();
+
+            pr1.Name = "First";
+
+            var pr2 = context2.Employees
+                .Where(e => e.EmployeeId == 1)
+                .Select(e => e.Projects.First())
+                .FirstOrDefault();
+
+            pr2.Name = "Second";
+
+            context1.SaveChanges();
+            context2.SaveChanges();
+        }
     }
 }
