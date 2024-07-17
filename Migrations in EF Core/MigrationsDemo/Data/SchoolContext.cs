@@ -9,7 +9,7 @@ namespace MigrationsDemo.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=localhost;Database=School;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-58IIM9O\\SQLEXPRESS;Database=School;Trusted_Connection=True;");
         }
     }
 }

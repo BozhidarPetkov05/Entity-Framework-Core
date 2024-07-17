@@ -9,5 +9,9 @@ namespace MigrationsDemo.Models
         public string FullName { get; set; } = null!;
 
         public int Age { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Email { get; set; } = null!;
     }
 }
