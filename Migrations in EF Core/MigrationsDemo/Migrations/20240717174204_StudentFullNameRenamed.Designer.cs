@@ -11,8 +11,8 @@ using MigrationsDemo.Data;
 namespace MigrationsDemo.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20240717155711_EmailAdded")]
-    partial class EmailAdded
+    [Migration("20240717174204_StudentFullNameRenamed")]
+    partial class StudentFullNameRenamed
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -39,7 +39,7 @@ namespace MigrationsDemo.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
