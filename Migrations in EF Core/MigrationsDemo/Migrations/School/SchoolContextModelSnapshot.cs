@@ -2,19 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MigrationsDemo.Data;
 
 #nullable disable
 
-namespace MigrationsDemo.Migrations
+namespace MigrationsDemo.Migrations.School
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20240717174204_StudentFullNameRenamed")]
-    partial class StudentFullNameRenamed
+    partial class SchoolContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
