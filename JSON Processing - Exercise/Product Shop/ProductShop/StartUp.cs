@@ -35,7 +35,13 @@ namespace ProductShop
             //Console.WriteLine(GetProductsInRange(context));
 
             //06
-            Console.WriteLine(GetSoldProducts(context));
+            //Console.WriteLine(GetSoldProducts(context));
+
+            //07
+            //Console.WriteLine(GetCategoriesByProductsCount(context));
+
+            //08
+            Console.WriteLine(GetUsersWithProducts(context));
         }
 
         private static string ConvertToJson(object obj)
@@ -44,7 +50,7 @@ namespace ProductShop
             {
                 Formatting = Formatting.Indented,
                 ContractResolver = new CamelCasePropertyNamesContractResolver(),
-                NullValueHandling = NullValueHandling.Ignore
+                //NullValueHandling = NullValueHandling.Ignore
             };
 
             string json = JsonConvert.SerializeObject(obj, settings);
@@ -128,13 +134,78 @@ namespace ProductShop
                         Price = p.Price,
                         BuyerFirstName = p.Buyer.FirstName,
                         BuyerLastName = p.Buyer.LastName
-                    }).ToList()
+                    })
                 })
                 .OrderBy(u => u.LastName)
                 .ThenBy(u => u.FirstName)
                 .ToList();
 
             return ConvertToJson(usersToSearch);
+        }
+
+        //P07. Export Categories By Products Count
+        public static string GetCategoriesByProductsCount(ProductShopContext context)
+        {
+            var categories = context.Categories
+                .Select(c => new CategoriesByProductCountDTO
+                {
+                    Category = c.Name,
+                    ProductsCount = c.CategoriesProducts.Count,
+                    AveragePrice = (c.CategoriesProducts.Average(cp => cp.Product.Price)).ToString("f2"),
+                    TotalRevenue = (c.CategoriesProducts.Sum(cp => cp.Product.Price)).ToString("f2")
+                })
+                .OrderByDescending(c => c.ProductsCount)
+                .ToList();
+
+            return ConvertToJson(categories);
+        }
+
+        //P08. Export Users and Products
+        public static string GetUsersWithProducts(ProductShopContext context)
+        {
+            var usersWithProduct = context.Users
+                .Where(u => u.ProductsSold.Any(p => p.BuyerId != null))
+                .Select(u => new
+                {
+                    firstName = u.FirstName,
+                    lastName = u.LastName,
+                    age = u.Age,
+                    soldProducts = u.ProductsSold
+                        .Where(p => p.BuyerId != null)
+                        .Select(p => new
+                        {
+                            name = p.Name,
+                            price = p.Price
+                        })
+                        .ToArray()
+                })
+                .OrderByDescending(u => u.soldProducts.Count())
+                .ToArray();
+
+
+            var output = new
+            {
+                usersCount = usersWithProduct.Count(),
+                users = usersWithProduct.Select(u => new
+                {
+                    u.firstName,
+                    u.lastName,
+                    u.age,
+                    soldProducts = new
+                    {
+                        count = u.soldProducts.Count(),
+                        products = u.soldProducts
+                    }
+                })
+            };
+
+            string jsonOutput = JsonConvert.SerializeObject(output, new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
+            return jsonOutput;
         }
     }
 }

@@ -12,6 +12,6 @@ namespace ProductShop.DTOs.Export
 
         public string LastName { get; set; }
 
-        public List<GetSoldProductDTO> SoldProducts { get; set; } = new List<GetSoldProductDTO>();
+        public IEnumerable<GetSoldProductDTO> SoldProducts { get; set; } = new List<GetSoldProductDTO>();
     }
 }
