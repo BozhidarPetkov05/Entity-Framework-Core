@@ -1,0 +1,17 @@
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\JSON Demo.exe
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\JSON Demo.deps.json
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\JSON Demo.runtimeconfig.json
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\JSON Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\JSON Demo.pdb
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.csproj.AssemblyReference.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.AssemblyInfoInputs.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.AssemblyInfo.cs
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.csproj.CoreCompileInputs.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\refint\JSON Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.pdb
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.genruntimeconfig.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\ref\JSON Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\JSON Processing\JSON Demo\JSON Demo\obj\Debug\net6.0\JSON Demo.csproj.CopyComplete
