@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Family xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Petrovi">
+  <members>
+    <Name>Gosho</Name>
+    <Age>35</Age>
+  </members>
+  <members>
+    <Name>Goshka</Name>
+    <Age>31</Age>
+  </members>
+</Family>

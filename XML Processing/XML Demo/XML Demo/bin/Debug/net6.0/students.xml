@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<class>
+  <student course="C#">
+    <name>Gosho</name>
+  </student>
+  <student course="Java">
+    <name>Pesho</name>
+  </student>
+</class>

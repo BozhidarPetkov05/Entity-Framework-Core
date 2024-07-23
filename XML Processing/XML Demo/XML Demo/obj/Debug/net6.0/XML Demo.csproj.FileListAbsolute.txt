@@ -1,0 +1,15 @@
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\bin\Debug\net6.0\XML Demo.exe
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\bin\Debug\net6.0\XML Demo.deps.json
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\bin\Debug\net6.0\XML Demo.runtimeconfig.json
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\bin\Debug\net6.0\XML Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\bin\Debug\net6.0\XML Demo.pdb
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.csproj.AssemblyReference.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.AssemblyInfoInputs.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.AssemblyInfo.cs
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.csproj.CoreCompileInputs.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\refint\XML Demo.dll
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.pdb
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\XML Demo.genruntimeconfig.cache
+C:\Users\XidZ01\Desktop\SoftUni\C# DB\Entity-Framework-Core\XML Processing\XML Demo\XML Demo\obj\Debug\net6.0\ref\XML Demo.dll
