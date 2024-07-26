@@ -15,6 +15,16 @@ namespace Invoices.Data
         { 
         }
 
+        public DbSet<Product> Products { get; set; } = null!;
+
+        public DbSet<Address> Addresses { get; set; } = null!;
+
+        public DbSet<Invoice> Invoices { get; set; } = null!;
+
+        public DbSet<Client> Clients { get; set; } = null!;
+
+        public DbSet<ProductClient> ProductsClients { get; set; } = null!;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -26,7 +36,8 @@ namespace Invoices.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-                  
+            modelBuilder.Entity<ProductClient>()
+                .HasKey(pc => new { pc.ClientId, pc.ProductId });
         }
     }
 }
