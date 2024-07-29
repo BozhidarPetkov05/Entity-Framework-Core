@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Invoices.Data.Models.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace Invoices.Data
         public const byte ProductNameMaxLength = 30;
         public const string ProductPriceMinValue = "5.00";
         public const string ProductPriceMaxValue = "1000.00";
+        public const int ProductCategoryTypeMinValue = (int)CategoryType.ADR;
+        public const int ProductCategoryTypeMaxValue = (int)CategoryType.Tyres;
         
         //Address
         public const byte AddressStreetNameMinLength = 10;
@@ -25,6 +28,8 @@ namespace Invoices.Data
         //Invoice
         public const int InvoiceNumberMinValue = 1_000_000_000;
         public const int InvoiceNumberMaxValue = 1_500_000_000;
+        public const int InvoiceCurrencyTypeMinValue = (int)CurrencyType.BGN;
+        public const int InvoiceCurrencyTypeMaxValue = (int)CurrencyType.USD;
 
         //Client
         public const byte ClientNameMinLength = 10;

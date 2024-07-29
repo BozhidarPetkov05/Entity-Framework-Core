@@ -14,7 +14,7 @@ namespace Invoices
 
             var projectDir = GetProjectDirectory();
 
-            //ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
+            ImportEntities(context, projectDir + @"Datasets/", projectDir + @"ImportResults/");
 
             //ExportEntities(context, projectDir + @"ExportResults/");
 
@@ -35,7 +35,7 @@ namespace Invoices
                 DataProcessor.Deserializer.ImportInvoices(context,
                     File.ReadAllText(baseDir + "invoices.json"));
             PrintAndExportEntityToFile(invoices, exportDir + "Actual Result - ImportInvoices.txt");
-
+            
             var products =
              DataProcessor.Deserializer.ImportProducts(context,
                  File.ReadAllText(baseDir + "products.json"));

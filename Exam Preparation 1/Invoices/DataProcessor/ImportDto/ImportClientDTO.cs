@@ -1,10 +1,12 @@
 ﻿using Invoices.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static Invoices.Data.DataConstraints;
 
 namespace Invoices.DataProcessor.ImportDto
 {
@@ -12,9 +14,18 @@ namespace Invoices.DataProcessor.ImportDto
     public class ImportClientDTO
     {
         [XmlElement(nameof(Name))]
-        public string Name { get; set; }
+        [Required]
+        [MinLength(ClientNameMinLength)]
+        [MaxLength(ClientNameMaxLength)]
+        public string Name { get; set; } = null!;
 
         [XmlElement(nameof(NumberVat))]
-        public string NumberVat { get; set; }
+        [Required]
+        [MinLength(ClientNumberVatMinLength)]
+        [MaxLength(ClientNumberVatMaxLength)]
+        public string NumberVat { get; set; } = null!;
+
+        [XmlArray(nameof(Addresses))]
+        public ImportAddresDTO[] Addresses { get; set; } = null!;
     }
 }
