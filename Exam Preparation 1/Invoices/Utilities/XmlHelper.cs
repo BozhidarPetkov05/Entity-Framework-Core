@@ -40,7 +40,7 @@ namespace Invoices.Utilities
             xmlNamespaces.Add(string.Empty, string.Empty);
 
             using StringWriter writer = new StringWriter(sb);
-            serializer.Serialize(writer, obj);
+            serializer.Serialize(writer, obj, xmlNamespaces);
 
             return sb.ToString().TrimEnd(); 
         }
