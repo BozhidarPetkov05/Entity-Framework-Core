@@ -1,20 +1,14 @@
 ﻿using System.Xml.Serialization;
 
-namespace ProductShop.DTOs.Import
+namespace ProductShop.DTOs.Export
 {
     [XmlType("Product")]
-    public class ProductImportDTO
+    public class SoldProductDto
     {
         [XmlElement("name")]
         public string Name { get; set; }
 
         [XmlElement("price")]
         public decimal Price { get; set; }
-
-        [XmlElement("sellerId")]
-        public int SellerId { get; set; }
-
-        [XmlElement("buyerId")]
-        public int BuyerId { get; set; }
     }
 }
