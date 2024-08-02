@@ -57,51 +57,72 @@ namespace ProductShop
         // Solve 03 Import Categories
         public static string ImportCategories(ProductShopContext context, string inputXml)
         {
-            var categoryDtos = DeserializeXmlToList<CategoryInportDto[]>(inputXml, "Categories");
+            XmlSerializer serializer = new XmlSerializer(typeof(CategoryInportDto[]),
+                new XmlRootAttribute("Categories"));
 
-            var categories = categoryDtos
-                .Where(dto => dto.Name != null)
-                .Select(dto => MapInitial().Map<Category>(dto))
+            CategoryInportDto[] importDtos;
+            using (StringReader reader = new StringReader(inputXml))
+            {
+                importDtos = (CategoryInportDto[])serializer.Deserialize(reader);
+            }
+
+            var categories = importDtos
+                .Select(dto => new Category()
+                {
+                    Name = dto.Name
+                })
                 .ToList();
 
-            context.Categories.AddRange(categories);
+            context.AddRange(categories);
             context.SaveChanges();
 
             return $"Successfully imported {categories.Count}";
         }
 
-        // Solve 04 Import Categories and Products
+        //04
+        //Works in Judge
         public static string ImportCategoryProducts(ProductShopContext context, string inputXml)
         {
-            var categoryProductsDtos = DeserializeXmlToList<CategoryProductInportDto[]>(inputXml, "CategoryProducts");
-            var listProductIds = context.Products.Select(s => s.Id).ToHashSet();
-            var listCategoryIds = context.Categories.Select(s => s.Id).ToHashSet();
+            XmlSerializer serializer = new XmlSerializer(typeof(CategoryProductInportDto[]),
+                new XmlRootAttribute("CategoryProducts"));
 
-            var categoryProducts = categoryProductsDtos
-                .Where(dto => listProductIds.Contains(dto.ProductId) &&
-                              listCategoryIds.Contains(dto.CategoryId))
-                .Select(dto => MapInitial().Map<CategoryProduct>(dto))
+            CategoryProductInportDto[] importDtos;
+            using (StringReader reader = new StringReader(inputXml))
+            {
+                importDtos = (CategoryProductInportDto[])serializer.Deserialize(reader);
+            }
+
+            var categoriesProducts = importDtos
+                .Select(dto => new CategoryProduct()
+                {
+                    CategoryId = dto.CategoryId,
+                    ProductId = dto.ProductId
+                })
                 .ToList();
 
-            context.CategoryProducts.AddRange(categoryProducts);
+            context.AddRange(categoriesProducts);
             context.SaveChanges();
 
-
-            return $"Successfully imported {categoryProducts.Count}";
+            return $"Successfully imported {categoriesProducts.Count}";
         }
 
-        // Solve 05 Export Products In Range
+        //05
+        //? ;(
         public static string GetProductsInRange(ProductShopContext context)
         {
-            var products = context.Products
-                .Where(p => p.Price >= 500 && p.Price <= 1000)
-                .OrderBy(p => p.Price)
+            ProductsRangeDto[] productsInRange = context.Products
+                .Where(dto => dto.Price >= 500 && dto.Price <= 1000)
+                .OrderBy(dto => dto.Price)
                 .Take(10)
-                .ProjectTo<ProductsRangeDto>(MapInitial().ConfigurationProvider)
+                .Select(p => new ProductsRangeDto()
+                {
+                    Name = p.Name,
+                    Price = p.Price,
+                    BuyerName = $"{p.Buyer.FirstName} {p.Buyer.LastName}"
+                })
                 .ToArray();
 
-
-            return Serialize<ProductsRangeDto[]>(products, "Products");
+            return Serialize<ProductsRangeDto[]>(productsInRange, "Products");
         }
 
         // Solve 06 Export Sold Products
