@@ -13,45 +13,70 @@ namespace ProductShop
     {
         public static void Main()
         {
-            var db = new ProductShopContext();
+            var context = new ProductShopContext();
 
 
-            //string xmlFilePath = "../../../Results/users-and-products.xml";
-
-            //File.WriteAllText(xmlFilePath, GetUsersWithProducts(db));
+            string user = "../../../Results/users.xml";
+            string products = "../../../Results/products.xml";
+            string categories = "../../../Results/categories.xml";
+            //Console.WriteLine(ImportUsers(context, user));
+            //Console.WriteLine(ImportProducts(context, products));
+            //Console.WriteLine(ImportCategories(context, categories));
         }
 
         // Solve 01 Import Users
         public static string ImportUsers(ProductShopContext context, string inputXml)
         {
-            UsersImportDto[] usersDtos = DeserializeXmlToList<UsersImportDto[]>(inputXml, "Users");
-            var validUsers = new HashSet<User>();
+            XmlSerializer serializer = new XmlSerializer(typeof(UsersImportDto[]),
+                new XmlRootAttribute("Users"));
 
-            foreach (var usersDto in usersDtos)
+            UsersImportDto[] importDtos;
+            using (StringReader reader = new StringReader(inputXml))
             {
-                User user = MapInitial().Map<User>(usersDto);
-                validUsers.Add(user);
+                importDtos = (UsersImportDto[])serializer.Deserialize(reader);
             }
 
-            context.Users.AddRange(validUsers);
+            User[] users = importDtos
+                .Select(dto => new User()
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    Age = dto.Age
+                })
+                .ToArray();
+
+            context.AddRange(users);
             context.SaveChanges();
 
-            return $"Successfully imported {validUsers.Count}"; ;
+            return $"Successfully imported {users.Length}";
         }
 
         // Solve 02 Import Products
         public static string ImportProducts(ProductShopContext context, string inputXml)
         {
-            var productDtos = DeserializeXmlToList<ProductsImportDto[]>(inputXml, "Products");
+            XmlSerializer serializer = new XmlSerializer(typeof(ProductsImportDto[]),
+                new XmlRootAttribute("Products"));
 
-            var validProducts = productDtos
-                .Select(dto => MapInitial().Map<Product>(dto))
-                .ToList();
+            ProductsImportDto[] importDtos;
+            using (StringReader reader = new StringReader(inputXml))
+            {
+                importDtos = (ProductsImportDto[])serializer.Deserialize(reader);
+            }
 
-            context.Products.AddRange(validProducts);
+            Product[] products = importDtos
+                .Select(dto => new Product()
+                {
+                    Name = dto.Name,
+                    Price = dto.Price,
+                    BuyerId = dto.BuyerId,
+                    SellerId = dto.SellerId
+                })
+                .ToArray();
+
+            context.AddRange(products);
             context.SaveChanges();
 
-            return $"Successfully imported {validProducts.Count}";
+            return $"Successfully imported {products.Length}";
         }
 
         // Solve 03 Import Categories
@@ -117,7 +142,7 @@ namespace ProductShop
                 .Select(p => new ProductsRangeDto()
                 {
                     Name = p.Name,
-                    Price = p.Price,
+                    Price = decimal.Round(p.Price, 2),
                     BuyerName = $"{p.Buyer.FirstName} {p.Buyer.LastName}"
                 })
                 .ToArray();
